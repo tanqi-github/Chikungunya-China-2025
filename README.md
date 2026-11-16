@@ -1,11 +1,9 @@
-# Chikungunya in China, 2025: public figure code
+# Code for Chikungunya in China, 2025
 
-This repository contains the public plotting code accompanying the city-week
+This repository contains the public code accompanying the city-week
 dataset describing reported chikungunya cases in China in 2025.
 
-The script reconstructs the five descriptive figures using only the released
-aggregate files. It does not read case-level records or the internal data
-construction, classification, review, or validation files.
+
 
 ## Public inputs
 
@@ -16,15 +14,10 @@ Place the following released files in one local directory:
 - `release_summary.json`
 
 The city-week table contains the reporting-city code, ISO week, reported case
-count, and inferred imported case count. The script calculates inferred local
-cases as:
-
-```text
-reported_cases - inferred_imported_cases
-```
+count, and inferred imported case count. 
 
 It then reconstructs the city milestones and weekly spatial concentration
-measures used in the figures.
+measures.
 
 ## Basemap
 
@@ -68,9 +61,9 @@ On Windows PowerShell:
 
 ```powershell
 python scripts/plot_scidata_public_release.py `
-  --release-dir "C:\path\to\public_release" `
-  --basemap-dir "C:\path\to\tianditu_geojson" `
-  --output-dir "C:\path\to\public_figures"
+  --release-dir "\path\to\public_release" `
+  --basemap-dir "\path\to\tianditu_geojson" `
+  --output-dir "\path\to\public_figures"
 ```
 
 Alternatively, set `SCIDATA_TIANDITU_DIR` instead of passing
@@ -89,21 +82,4 @@ Alternatively, set `SCIDATA_TIANDITU_DIR` instead of passing
 - `fig5_source_composition`: inferred local and imported case composition by
   reporting province and week
 
-The figures describe reported surveillance patterns. Reporting city is not
-necessarily the place of infection or residence, and the milestone summaries
-should not be interpreted as confirmed transmission routes or biological
-transmission speed.
-
-## Reproducibility checks
-
-Before plotting, the script checks the release summary against the aggregate
-tables, validates non-negative counts and a complete city-week grid, confirms
-the city lookup, and verifies that all reporting-city codes match the supplied
-basemap. Random point jitter in the milestone interval figure uses a fixed
-seed.
-
-## Data availability
-
-The released aggregate dataset and its persistent repository identifier will
-be linked here when the data deposit is public.
 
