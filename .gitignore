@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+
+# Keep local data, maps, and generated figures out of the code repository.
+data/
+outputs/
+tmp/
+geodata/
+public_release/
+public_figures/
+*.geojson
+
